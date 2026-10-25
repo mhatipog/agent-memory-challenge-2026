@@ -16,5 +16,6 @@ jobs:
       - name: Integration + unit tests
         run: npm test
       - name: Synthetic memory benchmark
-        run: npm run bench      - name: Harder synthetic retrieval regression
+        run: npm run bench
+      - name: Harder synthetic retrieval regression
         run: npm run bench:hard
