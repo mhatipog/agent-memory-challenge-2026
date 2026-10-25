@@ -30,15 +30,16 @@ export function selectCodingEvidence(input,{maxChars=12000,passthroughChars=1400
  spans.push({a:Math.max(0,text.length-1100),b:text.length,priority:3.5});
  spans.sort((a,b)=>b.priority-a.priority||b.a-a.a);
  const chosen=[],cap=maxChars;
+ const separator='\n[Original trajectory evidence omitted to fit memory budget]\n';
  let used=0;
  for(const s of spans){
   if(used>=cap)break;
   if(chosen.some(x=>s.a>=x.a&&s.b<=x.b))continue;
-  const remaining=cap-used;
+  const remaining=cap-used-(chosen.length?separator.length:0);
   if(remaining<60)break;
   const b=Math.min(s.b,s.a+remaining);
   chosen.push({a:s.a,b});
-  used+=b-s.a;
+  used+=b-s.a+(chosen.length>1?separator.length:0);
  }
  if(chosen.length===0)return{text:text.slice(-cap),selected:Math.min(text.length,cap),original:text.length,compressed:true};
  chosen.sort((a,b)=>a.a-b.a);
@@ -48,6 +49,6 @@ export function selectCodingEvidence(input,{maxChars=12000,passthroughChars=1400
   if(last&&s.a<=last.b)last.b=Math.max(last.b,s.b);
   else merged.push({...s});
  }
- const result=merged.map(s=>text.slice(s.a,s.b)).join('\n[Original trajectory evidence omitted to fit memory budget]\n');
+ const result=merged.map(s=>text.slice(s.a,s.b)).join(separator);
  return{text:result,selected:result.length,original:text.length,compressed:true};
 }
