@@ -66,6 +66,6 @@ New: code identifier decomposition, lexical domain expansion, multi-term FTS, po
 
 - Health endpoint: https://codememory-aml-2026.vct-cloud.workers.dev/health
 - Authenticated Add and Search were exercised against a **real isolated Cloudflare D1 database** from the existing private CI deployment runner. Source pinned for deployment to commit `4b2f7a0d32eb55807cc9faf6b7b76bb644301c35`.
-- [Private GitHub Actions deployment and live smoke evidence](https://github.com/mhatipog/web-operations/actions/runs/40187154467) (account owner access required). API credential is not in the public repository; the one-day CI artifact is restricted.
+- [Private GitHub Actions deployment and live smoke evidence](https://github.com/mhatipog/web-operations/actions/runs/40187595858) (account owner access required). API credential is not in the public repository; the seven-day CI artifact is restricted.
 - Official AML registration, organizer Smoke, and formal Full remain pending. An ordinary live smoke test is **not** an organizer Smoke pass.
 - Free-tier D1 max 500MB/database is a severe full-evaluation capacity risk. No production throughput or 1.8B-token storage capacity has been validated. Alternative storage/sharding would require engineering and benchmarking; do not assume prize eligibility.
