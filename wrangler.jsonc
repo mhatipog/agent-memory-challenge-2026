@@ -1,1 +1,0 @@
-{"name":"codememory-aml-2026","main":"src/worker.js","compatibility_date":"2026-10-20","triggers":{"crons":["0 3 * * *"]},"d1_databases":[{"binding":"DB","database_name":"codememory-aml-2026","database_id":"REPLACE_WITH_D1_DATABASE_ID"}]}

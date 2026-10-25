@@ -1,7 +1,0 @@
-node_modules/
-.wrangler/
-.env
-.env.*
-*.sqlite
-*.db
-coverage/

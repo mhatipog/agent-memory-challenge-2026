@@ -1,1 +1,0 @@
-{"name":"agent-memory-challenge-2026","version":"0.1.0","private":true,"type":"module","license":"MIT","scripts":{"test":"node --test test/*.test.js","bench":"node scripts/benchmark.mjs"},"engines":{"node":">=22"},"devDependencies":{"wrangler":"^4.40.0"}}
