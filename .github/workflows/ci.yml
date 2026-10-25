@@ -24,3 +24,6 @@ jobs:
 
       - name: Coding evidence retention and size research
         run: node scripts/scale-envelope.mjs
+
+      - name: Public VibeMemBench real trajectory probe
+        run: node scripts/real-trajectory-probe.mjs
