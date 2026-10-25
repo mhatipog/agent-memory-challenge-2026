@@ -15,7 +15,7 @@ for(let i=0;i<topics.length;i++){
  const t=topics[i],s=subjects[i];
  add('Incident '+s+' in '+t+'. Failed attempt did not work: '+s+' debug patch. Still broken: '+s+' observed.');
  const id=add('Verified resolution for '+t+': '+solutions[i]+'. Confirmed root cause corrected, regression tests passed.');
- test.push({id,query:'What was the verified fix for '+s+' in '+t+'?'});
+ test.push({id,query:'How was '+s+' in '+t+' fixed?'});
  for(let k=0;k<12;k++)add('Old unrelated triage '+s+' '+k+' for '+t.slice(0,4)+' routine attempts.');
 }
 for(let i=0;i<150;i++)add('Other tenant secret leak bait for '+topics[i%topics.length],'other');
