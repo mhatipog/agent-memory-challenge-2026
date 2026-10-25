@@ -18,3 +18,4 @@ END;
 CREATE TRIGGER IF NOT EXISTS memory_delete AFTER DELETE ON memories BEGIN
  INSERT INTO memory_fts(memory_fts,rowid,content,signals) VALUES('delete',old.id,old.content,old.signals);
 END;
+CREATE INDEX IF NOT EXISTS idx_memory_neighbors ON memories(user_id,request_id,part);
