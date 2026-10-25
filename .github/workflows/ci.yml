@@ -27,3 +27,6 @@ jobs:
 
       - name: Public VibeMemBench real trajectory probe
         run: node scripts/real-trajectory-probe.mjs
+
+      - name: Audit current Add protocol limits (no remote calls)
+        run: node scripts/contract-audit.mjs
