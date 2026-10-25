@@ -43,7 +43,7 @@ Authenticate with X-Api-Key, Authorization: Bearer, or Token when the secret is 
 
 - [x] Local implementation and tests
 - [x] Public source
-- [ ] Live deployed Add/Search endpoints
+- [x] Live authenticated Add/Search endpoints (hosted smoke validated October 25, 2026)
 - [ ] Organizer evaluation application and key
 - [ ] Official Smoke + Full review and published score
 
@@ -58,6 +58,14 @@ Comparative research: [MemoraX Code](https://github.com/memorax-ai/memorax-code)
 
 New: code identifier decomposition, lexical domain expansion, multi-term FTS, positive-versus-failed-history reranking, adjacent source evidence, authenticated-by-default API, and JSON1 bulk Add inserts to stay within D1 query limits.
 
-**Synthetic stress test** (44 cases/584 memories; compare `npm run bench:hard`): BM25 14/44 top-1, original rank fusion 30/44 top-1, updated verified-fix reranker 43/44 top-1. This synthetic fixture is intentionally constructed for engineering repair-history confusion, not a representative prediction of CAMBench or an official leaderboard result.
+**Local adversarial stress fixture:** a 44-case / 584-memory development benchmark reported 43/44 with the first tuned reranker versus 30/44 prior fusion; this was a *development-set* result and did **not** replicate across tougher queries. On the independent CI-runnable 30-query adversarial fixture, the latest strategy tied baseline at 28/30 top-1. On a 15-query fixture drawn from an attributed third-party coding-memory corpus (see `scripts/public-coding-benchmark.mjs`), both simple FTS and the hybrid approach achieved 12/15 top-1. These are not official competition scores; do not infer an improvement over competitors.
 
 **Deployment risk:** official coding evaluation reports very large memory volume; Cloudflare D1 Free limits an individual database to 500 MB. A free-tier D1 deployment may pass Smoke but is unlikely to complete Full without capacity engineering. No official submission or prize is claimed.
+
+## Live operations verification (2026-10-25)
+
+- Health endpoint: https://codememory-aml-2026.vct-cloud.workers.dev/health
+- Authenticated Add and Search were exercised against a **real isolated Cloudflare D1 database** from the existing private CI deployment runner. Source pinned for deployment to commit `4b2f7a0d32eb55807cc9faf6b7b76bb644301c35`.
+- [Private GitHub Actions deployment and live smoke evidence](https://github.com/mhatipog/web-operations/actions/runs/40187154467) (account owner access required). API credential is not in the public repository; the one-day CI artifact is restricted.
+- Official AML registration, organizer Smoke, and formal Full remain pending. An ordinary live smoke test is **not** an organizer Smoke pass.
+- Free-tier D1 max 500MB/database is a severe full-evaluation capacity risk. No production throughput or 1.8B-token storage capacity has been validated. Alternative storage/sharding would require engineering and benchmarking; do not assume prize eligibility.
