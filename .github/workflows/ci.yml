@@ -21,3 +21,6 @@ jobs:
         run: npm run bench:hard
       - name: Pinned third-party coding-memory corpus
         run: node scripts/public-coding-benchmark.mjs
+
+      - name: Coding evidence retention and size research
+        run: node scripts/scale-envelope.mjs
