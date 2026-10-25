@@ -12,7 +12,7 @@ test('preserves verifiable fix near the middle of long noisy trace',()=>{
  const raw=noise.slice(0,Math.floor(noise.length/2))+'\n'+key+'\n'+noise.slice(Math.floor(noise.length/2));
  const x=selectCodingEvidence(raw,{maxChars:8000,passthroughChars:4000});
  assert.ok(x.compressed);assert.ok(x.text.includes(key));
- assert.ok(x.selected < raw.length);assert.ok(x.text.length <= 8500);
+ assert.ok(x.selected < raw.length);assert.ok(x.text.length <= 8000);
 });
 test('does not invent code or solutions during formation',()=>{
  const source='Historical evidence\n'+('random unrelated output line\n').repeat(1000);
@@ -24,5 +24,5 @@ test('separates loss and retention stats',()=>{
  const x=selectCodingEvidence(source,{maxChars:4000,passthroughChars:3000});
  assert.ok(x.selected<=source.length);
  assert.ok(x.original===source.length);
- assert.ok(x.text.length <= 5500);
+ assert.ok(x.text.length <= 4000);
 });
