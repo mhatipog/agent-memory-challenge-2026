@@ -1,0 +1,22 @@
+name: AML Eval Key location check
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/aml-key-location-check.yml']
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    env:
+      AML_EVAL_KEY: ${{ secrets.AML_EVAL_KEY }}
+    steps:
+      - name: Report existence only
+        shell: bash
+        run: |
+          if [ -n "${AML_EVAL_KEY:-}" ]; then
+            echo 'AML_EVAL_KEY presence in public source repo: configured'
+          else
+            echo 'AML_EVAL_KEY presence in public source repo: not-configured'
+          fi
+          echo 'No key value is printed or sent over network.'
