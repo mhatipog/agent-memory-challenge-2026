@@ -78,7 +78,10 @@ export function rerankEvidence(rows,query,{limit=100}={}){
   const sym=symbols.filter(t=>s.includes(t)).length;
   const verified=/\b(verified|confirmed|resolved|root cause|regression (?:tests? )?pass(?:ed)?|successful(?:ly)?|fixed by|validated fix|final fix|tests passed|approved solution)\b/i.test(c);
   const failed=/\b(failed attempt|did not (?:work|fix)|does not (?:work|fix)|unsuccessful|reverted|rolled back|not the fix|still broken)\b/i.test(c);
-  const score=Number(r.score||0)+(verified&&!failed?0.018:0)-(failed&&!verified?0.012:0)+Math.min(overlap,1)*0.010+Math.min(sym,3)*0.007;
+  // Source status is a strong evidence-quality signal, especially when
+  // repeated failed attempts copy most of the same issue-description words.
+  // Never treat either term as ground truth: preserve all raw evidence.
+  const score=Number(r.score||0)+(verified&&!failed?0.068:0)-(failed&&!verified?0.050:0)+Math.min(overlap,1)*0.010+Math.min(sym,3)*0.007;
   return {...r,score};
  }).sort((a,b)=>b.score-a.score||Number(b.id)-Number(a.id));
  const selected=[],duplicates=[];
