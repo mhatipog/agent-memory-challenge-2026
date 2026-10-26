@@ -33,3 +33,6 @@ jobs:
 
       - name: SQLite FTS trigger-write diagnostic (not D1 billing)
         run: node scripts/d1-write-budget.mjs
+
+      - name: Intent-conditioned memory ablation (real public + synthetic)
+        run: node scripts/intent-ablation.mjs
