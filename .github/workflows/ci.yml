@@ -27,3 +27,6 @@ jobs:
 
       - name: Compressed evidence indexing ablation (public fixture)
         run: node scripts/compressed-memory-ablation.mjs
+
+      - name: Compressed evidence sparse FTS storage feasibility (synthetic)
+        run: node scripts/compressed-capacity.mjs
