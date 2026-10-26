@@ -30,3 +30,6 @@ jobs:
 
       - name: Compressed evidence sparse FTS storage feasibility (synthetic)
         run: node scripts/compressed-capacity.mjs
+
+      - name: SQLite FTS trigger-write diagnostic (not D1 billing)
+        run: node scripts/d1-write-budget.mjs
