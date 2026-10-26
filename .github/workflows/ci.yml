@@ -24,3 +24,6 @@ jobs:
 
       - name: Offline FTS capacity envelope (not official performance)
         run: node scripts/capacity-envelope.mjs
+
+      - name: Compressed evidence indexing ablation (public fixture)
+        run: node scripts/compressed-memory-ablation.mjs
